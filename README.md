@@ -22,7 +22,7 @@ Cloudflare Pages or another static host should publish that folder directly. The
 
 The intended launch domains are:
 
-- `ygg.cymru`
-- `ygg.wales`
+- `ygg.cymru` - Cymraeg / Welsh site
+- `ygg.wales` - English site
 
 See `docs/DEPLOYMENT.md` for the GitHub and Cloudflare connection checklist.
