@@ -86,7 +86,7 @@
         <nav aria-label="Policies and statutory links">
           <h3 data-cy="Gwybodaeth" data-en="Information">Gwybodaeth</h3>
           <a href="#" data-cy="Diogelu" data-en="Safeguarding">Diogelu</a>
-          <a href="#" data-cy="Polisïau" data-en="Policies">Polisïau</a>
+          <a href="#" data-cy="PolisÃ¯au" data-en="Policies">PolisÃ¯au</a>
           <a href="#" data-cy="Preifatrwydd" data-en="Privacy">Preifatrwydd</a>
           <a href="#" data-cy="Hygyrchedd" data-en="Accessibility">Hygyrchedd</a>
           <a href="faqs.html" data-cy="Cwestiynau cyffredin" data-en="Frequently asked questions">Cwestiynau cyffredin</a>
@@ -107,7 +107,7 @@
     "Tyfu'n Gymraeg. Perthyn i Lundain.": "Grow in Welsh. Belong in London.",
     "Dechrau derbyniadau": "Start admissions",
     "Gweld gyrfaoedd": "View careers",
-    "Cysylltu â'r swyddfa": "Contact the office",
+    "Cysylltu Ã¢'r swyddfa": "Contact the office",
     "Ffurflen gyswllt": "Contact form",
     "Yn barod i holi, ymweld neu wneud cais?": "Ready to ask, visit or apply?",
     "Cysylltu": "Contact",
@@ -168,7 +168,13 @@
   document.querySelectorAll("[data-lang-choice]").forEach((button) => {
     button.addEventListener("click", () => applyLanguage(button.dataset.langChoice));
   });
-  applyLanguage(localStorage.getItem("ygll-language") || "cy");
+  function defaultLanguageForHost() {
+    const host = window.location.hostname.toLowerCase();
+    if (host === "ygg.wales" || host.endsWith(".ygg.wales")) return "en";
+    return "cy";
+  }
+
+  applyLanguage(localStorage.getItem("ygll-language") || defaultLanguageForHost());
 
   document.querySelectorAll("details").forEach((item) => {
     item.addEventListener("toggle", () => {
