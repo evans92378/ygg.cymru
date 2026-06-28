@@ -41,23 +41,16 @@ Add the domains through the Pages project's Custom domains screen first. Cloudfl
 
 ## Current Domain Status
 
-`ygg.cymru`, `www.ygg.cymru`, `ygg.wales` and `www.ygg.wales` have been added to the `ygg-cymru` Pages project, but Cloudflare reports them as pending until DNS records are set.
+`ygg.cymru`, `www.ygg.cymru`, `ygg.wales` and `www.ygg.wales` have been added to the `ygg-cymru` Pages project.
 
-Required DNS records in the `ygg.cymru` zone:
+DNS records have been set and all four public URLs return HTTP 200:
 
-```text
-Type: CNAME
-Name: @
-Target: ygg-cymru.pages.dev
-Proxy: on
+- `https://ygg.cymru`
+- `https://www.ygg.cymru`
+- `https://ygg.wales`
+- `https://www.ygg.wales`
 
-Type: CNAME
-Name: www
-Target: ygg-cymru.pages.dev
-Proxy: on
-```
-
-Required DNS records in the `ygg.wales` zone:
+DNS records in the `ygg.cymru` zone:
 
 ```text
 Type: CNAME
@@ -71,9 +64,23 @@ Target: ygg-cymru.pages.dev
 Proxy: on
 ```
 
-The current Wrangler OAuth login can deploy Pages and add custom domains, but it does not include DNS edit permission. To finish DNS from PowerShell, use a Cloudflare API token with DNS edit permission for the `ygg.cymru` zone.
+DNS records in the `ygg.wales` zone:
 
-`ygg.wales` now appears in the logged-in Cloudflare account, but its zone status was still pending when checked.
+```text
+Type: CNAME
+Name: @
+Target: ygg-cymru.pages.dev
+Proxy: on
+
+Type: CNAME
+Name: www
+Target: ygg-cymru.pages.dev
+Proxy: on
+```
+
+The Wrangler OAuth login can deploy Pages and add custom domains, but it does not include DNS edit permission. DNS was completed from PowerShell using a temporary Cloudflare API token with DNS edit permission for both zones. Revoke or rotate that token after setup.
+
+Cloudflare Pages may temporarily show stale pending validation for some hostnames while certificates finish validating, even after the URLs are serving successfully.
 
 ## Pre-Launch Checks
 
