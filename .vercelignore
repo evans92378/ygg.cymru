@@ -1,0 +1,41 @@
+# Deploy only the static website from this mixed local workspace.
+
+# Local dependencies, caches, Vercel metadata, and secrets
+node_modules/
+.npm-cache/
+.vercel/
+.agents/
+.codex/
+.git/
+.env
+.env.*
+!.env.example
+
+# Local VM/CMS/editor workspaces
+_local/
+wordpress-dev/
+school_site_editor/
+stiwdio-editor/
+ygg-school-theme/
+
+# Large local archives and VM images
+*-launch-repo.zip
+*.vhdx
+*.rootfs.tar.gz
+ubuntu-*.tar.gz
+
+# Local setup scripts, docs, and scratch files
+*.ps1
+*.sh
+*.cmd
+README.md
+INSTALL_FRAPPE.md
+WORDPRESS_*.md
+New Text Document.txt
+yggllundain-lookandfeel.txt
+
+# Local design/editor screenshots not referenced by the static site
+history draft.png
+site editor.png
+template editor.png
+ygll move to ealing.png

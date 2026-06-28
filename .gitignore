@@ -1,0 +1,47 @@
+__pycache__/
+*.py[cod]
+
+# Codex/local workspace state
+.agents/
+.codex/
+
+# Local dependencies and caches
+node_modules/
+.npm-cache/
+.vercel/
+
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+
+# Build outputs
+dist/
+build/
+out/
+*-launch-repo.zip
+
+# Local VM/CMS/tooling artifacts
+_local/
+*.vhdx
+*.rootfs.tar.gz
+ubuntu-*.tar.gz
+wordpress-dev/
+school_site_editor/
+stiwdio-editor/
+ygg-school-theme/
+
+# Local setup scripts and notes
+*.ps1
+*.sh
+*.cmd
+INSTALL_FRAPPE.md
+WORDPRESS_*.md
+New Text Document.txt
+yggllundain-lookandfeel.txt
+
+# Local design/editor screenshots
+history draft.png
+site editor.png
+template editor.png
+ygll move to ealing.png
