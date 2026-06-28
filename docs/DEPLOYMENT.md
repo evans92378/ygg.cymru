@@ -16,6 +16,12 @@ Current Pages project:
 - Current deployment: `https://77d91cf2.ygg-cymru.pages.dev`
 - Deployment method used: Wrangler direct upload from `site/`
 
+Language/domain intent:
+
+- `ygg.cymru` is the Cymraeg / Welsh site.
+- `ygg.wales` is the English site.
+- The current static site defaults to Cymraeg on `ygg.cymru` and English on `ygg.wales`; the visible language toggle remains available.
+
 The GitHub repository is still the source of truth for the cleaned site files. Future deployments can either be direct uploads with Wrangler or connected to Git through the Cloudflare dashboard.
 
 For a Git-connected setup, use Cloudflare Pages with the GitHub repository.
@@ -35,7 +41,7 @@ Add the domains through the Pages project's Custom domains screen first. Cloudfl
 
 ## Current Domain Status
 
-`ygg.cymru` and `www.ygg.cymru` have been added to the `ygg-cymru` Pages project, but Cloudflare reports them as pending until DNS records are set.
+`ygg.cymru`, `www.ygg.cymru`, `ygg.wales` and `www.ygg.wales` have been added to the `ygg-cymru` Pages project, but Cloudflare reports them as pending until DNS records are set.
 
 Required DNS records in the `ygg.cymru` zone:
 
@@ -51,13 +57,27 @@ Target: ygg-cymru.pages.dev
 Proxy: on
 ```
 
+Required DNS records in the `ygg.wales` zone:
+
+```text
+Type: CNAME
+Name: @
+Target: ygg-cymru.pages.dev
+Proxy: on
+
+Type: CNAME
+Name: www
+Target: ygg-cymru.pages.dev
+Proxy: on
+```
+
 The current Wrangler OAuth login can deploy Pages and add custom domains, but it does not include DNS edit permission. To finish DNS from PowerShell, use a Cloudflare API token with DNS edit permission for the `ygg.cymru` zone.
 
-`ygg.wales` did not appear as an active zone in the logged-in Cloudflare account during setup. Add or activate the `ygg.wales` zone in Cloudflare before wiring it to Pages.
+`ygg.wales` now appears in the logged-in Cloudflare account, but its zone status was still pending when checked.
 
 ## Pre-Launch Checks
 
 - Confirm image usage permissions for all school photos in `site/assets/`.
 - Replace placeholder policy, privacy, safeguarding and accessibility links.
 - Connect the contact form to a real form handler, or make the page email-only before launch.
-- Decide whether `ygg.cymru` or `ygg.wales` is the main public address.
+- Keep `ygg.cymru` Welsh-first and `ygg.wales` English-first.
