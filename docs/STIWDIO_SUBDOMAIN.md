@@ -26,6 +26,27 @@ Protect `stiwdio.ygg.cymru` with Cloudflare Access before the WordPress login sc
 
 ## Practical Routes
 
+### Current Temporary Setup
+
+`stiwdio.ygg.cymru` is currently routed through a Cloudflare Tunnel named `ygg-stiwdio`.
+
+- Public editor route: `https://stiwdio.ygg.cymru/school-admin`
+- WordPress login route: `https://stiwdio.ygg.cymru/wp-login.php`
+- Local origin: `http://127.0.0.1:8081`
+- Tunnel ID: `8257a2df-81b3-4360-9c4d-b395fd3ce290`
+
+The tunnel is running as a user process, not a Windows service, because service installation requires elevated administrator access.
+
+To restart it after reboot:
+
+```powershell
+cd E:\ygg-cymru-demo
+.\_local\wordpress\start-stiwdio-origin.ps1
+.\_local\cloudflare\start-stiwdio-tunnel.ps1
+```
+
+The admin credentials are stored locally in `_local/wordpress/stiwdio-admin-credentials.txt`, which is ignored by Git.
+
 ### Route A: Production Editor
 
 Use a managed WordPress host or VPS.
